@@ -1,17 +1,24 @@
 import Hero from "../sections/Hero";
-import { Canvas } from "@react-three/fiber";
-import { EffectComposer } from "@react-three/postprocessing";
-import { Fluid, useConfig } from "@whatisjery/react-fluid-distortion";
+import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import MovText from "../sections/MovText";
 
 const Home = () => {
-  const config = useConfig();
-
   return (
-    <div>
+    <div className="relative">
       <Hero />
-      <div className="h-[100vh] bg-amber-500 flex justify-center items-center">
-        <h1 className="text-5xl">Hello World</h1>
-      </div>
+      {/* <motion.div
+        className="absolute bottom-4 left-1/2 -translate-x-1/2"
+        animate={{ y: [0, 6, 0] }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      >
+        <ChevronDown size={40} color="white" />
+      </motion.div> */}
+      <MovText />
     </div>
   );
 };
