@@ -5,15 +5,28 @@
 .calsans-font {
   font-family: "Cal Sans", serif;
 }
-.robotoc-font {
+/* .robotoc-font {
   font-family: "Roboto Condensed", serif;
-}
+} */
+
 *{
-    font-family: "Roboto" , serif;
+    font-family: "Roboto Condensed" , serif;
 }
-.hero-text-shadow{
-  text-shadow: 5px 5px 5px black;
+
+::selection {
+  background: white;
+  color: black;
 }
-#leva__root {
-  display: none !important;
+
+
+.bar_content {
+  display: block; /* Important to give the content a width */
+  width: 100%;
+  transform: translateX(0%); /* Animation start out of the screen */
+  animation: move 10s linear infinite /* infinite make reapeat the animation indefinitely */;
+}
+
+/* Create the animation */
+@keyframes move {
+  to { transform: translateX(-100%); }
 }

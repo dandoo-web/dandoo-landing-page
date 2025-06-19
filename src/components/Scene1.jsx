@@ -20,7 +20,7 @@ const Scene1 = () => {
     <Canvas
       style={{
         width: "100%",
-        height: "90vh",
+        height: "100%",
       }}
     >
       <ambientLight intensity={5} />
@@ -67,7 +67,7 @@ const Scene1 = () => {
         Let's Talk
       </Text>
 
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <EffectComposer>
         <Fluid {...config1} />
       </EffectComposer>
