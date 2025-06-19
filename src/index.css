@@ -1,10 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital@0;1&display=swap');
 @import "tailwindcss";
 
 .calsans-font {
   font-family: "Cal Sans", serif;
 }
+.robotoc-font {
+  font-family: "Roboto Condensed", serif;
+}
 *{
     font-family: "Roboto" , serif;
+}
+.hero-text-shadow{
+  text-shadow: 5px 5px 5px black;
+}
+#leva__root {
+  display: none !important;
 }
