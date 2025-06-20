@@ -2,6 +2,7 @@ import Hero from "../sections/Hero";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import MovText from "../sections/MovText";
+import About from "../sections/About";
 
 const Home = () => {
   return (
@@ -18,7 +19,9 @@ const Home = () => {
       >
         <ChevronDown size={40} color="white" />
       </motion.div> */}
-      <MovText />
+      <MovText postion={"top"} />
+      <About />
+      <MovText postion={"bottom"} />
     </div>
   );
 };

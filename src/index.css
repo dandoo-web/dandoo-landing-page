@@ -1,32 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
 @import "tailwindcss";
-
-.calsans-font {
-  font-family: "Cal Sans", serif;
-}
-/* .robotoc-font {
-  font-family: "Roboto Condensed", serif;
-} */
-
-*{
-    font-family: "Roboto Condensed" , serif;
-}
 
 ::selection {
   background: white;
   color: black;
 }
 
-
-.bar_content {
-  display: block; /* Important to give the content a width */
-  width: 100%;
-  transform: translateX(0%); /* Animation start out of the screen */
-  animation: move 10s linear infinite /* infinite make reapeat the animation indefinitely */;
+*{
+    font-family: "Roboto Condensed" , serif;
 }
 
-/* Create the animation */
-@keyframes move {
-  to { transform: translateX(-100%); }
+.calsans-font {
+  font-family: "Cal Sans", serif;
+}
+.anton-font {
+   font-family: "Anton", sans-serif;
+}
+.vintage-font {
+   font-family: "Pirata One", sans-serif;
+}
+
+/* moving text animation */
+.logo-div{
+  white-space: nowrap;
+}
+.logo-slide{
+  animation: slide 30s infinite linear;
+}
+
+@keyframes slide {
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
 }
