@@ -15,16 +15,17 @@ const About = () => {
         }
         return prev + 1;
       });
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="w-[90%] my-[10vh] mx-auto">
+      <p className="text-center font-medium pb-5">[ ABOUT US ]</p>
       <div className="flex justify-center items-center">
         <div className="text-9xl">
-          <h1 className="text-center tracking-tight calsans-font uppercase">
+          <h1 className="text-center translate tracking-tight calsans-font uppercase">
             Dandoo
           </h1>
           <h1
@@ -32,7 +33,7 @@ const About = () => {
           >
             {info[count][0]}
           </h1>
-          <h1 className="text-center tracking-tight uppercase calsans-font ">
+          <h1 className="text-center translate tracking-tight uppercase calsans-font ">
             Websites
           </h1>
         </div>
