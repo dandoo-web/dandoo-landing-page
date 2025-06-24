@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import mask from "../assets/mask.svg";
 
 const About = () => {
   const info = [
