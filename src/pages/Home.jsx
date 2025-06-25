@@ -25,7 +25,7 @@ const Home = () => {
       <About />
       <MovText postion={"bottom"} />
       <Services />
-      <MovText postion={"bottom"} />
+      {/* <MovText postion={"bottom"} /> */}
       <Project />
     </div>
   );
