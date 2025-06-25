@@ -52,7 +52,6 @@ const ProjectHover = () => {
           duration: 0.5,
           ease: "none",
           scrollTrigger: {
-            markers: true,
             trigger: title,
             start: "top 100%",
             end: "bottom 80%", // This changes makes the scroll vetter
