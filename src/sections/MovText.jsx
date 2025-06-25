@@ -2,7 +2,7 @@ const MovText = ({ postion }) => {
   return (
     <div
       className={`relative ${
-        postion === "top" ? "mt-20" : "mb-20"
+        postion === "top" ? "mt-20" : ""
       } py-2 bg-white text-black overflow-hidden `}
     >
       <div className="logo-div overflow-hidden">
