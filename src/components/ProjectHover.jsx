@@ -8,17 +8,20 @@ const projects = [
   {
     title: "Project Alpha",
     description: "A cutting-edge mobile app for e-commerce.",
-    image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
   },
   {
     title: "Beta Build",
     description: "A responsive website for a fintech startup.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
   },
   {
     title: "Gamma Grid",
     description: "An interactive portfolio for a photographer.",
-    image: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&h=600&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&h=600&fit=crop",
   },
 ];
 
@@ -46,12 +49,12 @@ const ProjectHover = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
-          ease: "power3.out",
+          duration: 0.5,
+          ease: "none",
           scrollTrigger: {
             trigger: title,
-            start: "top 80%",
-            end: "bottom 20%",
+            start: "top 100%",
+            end: "bottom 80%", // This changes makes the scroll vetter
             toggleActions: "play none none reverse",
           },
         }
@@ -89,17 +92,17 @@ const ProjectHover = () => {
     <div className="relative">
       {/* Fixed Background */}
       <div className="fixed inset-0 bg-black -z-10" />
-      
+
       {/* Scrolling Content */}
       <div ref={containerRef} className="relative z-10">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="h-screen flex items-center justify-center relative"
+            className="h-[90vh] flex items-center justify-center relative"
           >
             <h2
               ref={(el) => (titlesRef.current[index] = el)}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold text-white cursor-pointer transition-all duration-300 hover:text-gray-300 hover:tracking-wider"
+              className="text-6xl [text-shadow:5px_5px_10px_black] md:text-8xl lg:text-9xl font-bold text-white/80 cursor-pointer transition-all duration-300 hover:text-gray-300 hover:tracking-wider"
               onMouseEnter={() => setHoveredProject(project)}
               onMouseLeave={() => setHoveredProject(null)}
             >

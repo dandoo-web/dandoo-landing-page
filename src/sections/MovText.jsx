@@ -3,7 +3,7 @@ const MovText = ({ postion }) => {
     <div
       className={`relative ${
         postion === "top" ? "mt-20" : ""
-      } py-2 bg-white text-black overflow-hidden `}
+      } py-2 bg-white/90 text-black overflow-hidden `}
     >
       <div className="logo-div overflow-hidden">
         <div className="logo-slide inline-block">
