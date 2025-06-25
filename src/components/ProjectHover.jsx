@@ -49,12 +49,13 @@ const ProjectHover = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 1.5,
-          ease: "power3.out",
+          duration: 0.5,
+          ease: "none",
           scrollTrigger: {
+            markers: true,
             trigger: title,
-            start: "top 80%",
-            end: "bottom 20%",
+            start: "top 100%",
+            end: "bottom 80%", // This changes makes the scroll vetter
             toggleActions: "play none none reverse",
           },
         }
@@ -102,7 +103,7 @@ const ProjectHover = () => {
           >
             <h2
               ref={(el) => (titlesRef.current[index] = el)}
-              className="text-6xl md:text-8xl lg:text-9xl font-bold text-white/80 cursor-pointer transition-all duration-300 hover:text-gray-300 hover:tracking-wider"
+              className="text-6xl [text-shadow:5px_5px_10px_black] md:text-8xl lg:text-9xl font-bold text-white/80 cursor-pointer transition-all duration-300 hover:text-gray-300 hover:tracking-wider"
               onMouseEnter={() => setHoveredProject(project)}
               onMouseLeave={() => setHoveredProject(null)}
             >
