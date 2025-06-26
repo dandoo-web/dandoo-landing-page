@@ -9,7 +9,7 @@ import Project from "../sections/Project";
 const Home = () => {
   return (
     <div className="relative">
-      <Hero />
+      {/* <Hero /> */}
       <motion.div
         className="absolute bottom-4 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 6, 0] }}
@@ -21,9 +21,9 @@ const Home = () => {
       >
         <ChevronDown size={40} color="white" />
       </motion.div>
-      <MovText postion={"top"} />
+      {/* <MovText postion={"top"} /> */}
       <About />
-      <MovText postion={"bottom"} />
+      {/* <MovText postion={"bottom"} /> */}
       <Services />
       {/* <MovText postion={"bottom"} /> */}
       <Project />
