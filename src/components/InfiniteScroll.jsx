@@ -15,6 +15,7 @@ export default function InfiniteScroll({
   autoplaySpeed = 0.5,
   autoplayDirection = "down",
   pauseOnHover = false,
+  
 }) {
   const wrapperRef = useRef(null);
   const containerRef = useRef(null);
@@ -128,6 +129,7 @@ export default function InfiniteScroll({
     isTilted,
     tiltDirection,
     negativeMargin,
+    
   ]);
 
   return (
