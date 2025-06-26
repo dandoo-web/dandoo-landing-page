@@ -39,6 +39,7 @@ export default function Services() {
               autoplayDirection="down"
               pauseOnHover={false}
               negativeMargin="-45vh"
+             
             />
           </div>
           <p className="absolute z-30 bottom-3 bg-black/50 rounded-full left-5">
