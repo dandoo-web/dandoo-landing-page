@@ -103,20 +103,12 @@ html {
   position: relative;
 }
 
-.logo-div{
+.logo-div2{
   white-space: nowrap;
 }
-.logo-slide{
+.logo-slide2{
   animation: slide 5s infinite linear;
 }
-.logo-div:hover .logo-slide{
+.logo-div2:hover .logo-slide{
   animation-play-state: paused;
-}
-@keyframes slide {
-  from{
-    transform: translateX(0);
-  }
-  to{
-    transform: translateX(-100%);
-  }
 }

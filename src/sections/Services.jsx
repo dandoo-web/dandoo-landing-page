@@ -68,17 +68,17 @@ export default function Services() {
               Built with What Others Are Still Googling.
             </h1>
             <div className="w-full">
-              <div className="logo-div relative py-5 h-full flex gap-10 items-center w-full overflow-hidden">
+              <div className="logo-div2 relative py-5 h-full flex gap-10 items-center w-full overflow-hidden">
                 <div className="bg-gradient-to-r from-black to-transparent absolute left-0 top-0 bottom-0 z-20 h-full w-1/6"></div>
                 <div className="bg-gradient-to-l from-black to-transparent absolute right-0 top-0 bottom-0 z-20 h-full w-1/6"></div>
-                <div className="logo-slide text-8xl items-center justify-center gap-10 flex w-full">
+                <div className="logo-slide2 text-8xl items-center justify-center gap-10 flex w-full">
                   <RiNextjsFill />
                   <FaReact />
                   <FaFigma />
                   <SiThreedotjs />
                   <RiTailwindCssFill />
                 </div>
-                <div className="logo-slide text-8xl items-center justify-center gap-10 flex w-full">
+                <div className="logo-slide2 text-8xl items-center justify-center gap-10 flex w-full">
                   <RiNextjsFill />
                   <FaReact />
                   <FaFigma />
