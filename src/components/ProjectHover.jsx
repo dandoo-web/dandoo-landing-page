@@ -1,41 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Alpha from "../pages/Alpha";
 import { Link } from "react-router-dom";
+import projects from "../info/projectinfo.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
-const projects = [
-  { 
-    title: "Project Alpha",
-    description: "A cutting-edge mobile app for e-commerce.",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
-  },
-  { 
-    title: "Beta Build",
-    description: "A responsive website for a fintech startup.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-  },
-  { 
-    title: "Gamma Grid",
-    description: "An interactive portfolio for a photographer.",
-    image:
-      "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&h=600&fit=crop",
-  },
-];
-
-const ProjectHover = (  ) => {
+const ProjectHover = () => {
   const containerRef = useRef(null);
   const titlesRef = useRef([]);
   const imageRef = useRef(null); // Add ref for floating image
   const [hoveredProject, setHoveredProject] = useState(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
-  
+
   useEffect(() => {
     const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -91,9 +68,7 @@ const ProjectHover = (  ) => {
     animate();
     return () => cancelAnimationFrame(animFrame);
   }, [hoveredProject, mousePosition.x, mousePosition.y]);
-  
-  
-   
+
   return (
     <div className="relative">
       {/* Fixed Background */}
@@ -101,31 +76,25 @@ const ProjectHover = (  ) => {
 
       {/* Scrolling Content */}
       <div ref={containerRef} className="relative z-10">
-        
-
-          
-     
         {projects.map((project, index) => (
           <div
             key={project.title || index}
             className="h-[90vh] flex items-center justify-center relative"
-            >
-              <Link to={`/Alpha`} >
-            <h2 
-              ref={(el) => (titlesRef.current[index] = el)}
-              className="text-6xl [text-shadow:5px_5px_10px_black] md:text-8xl lg:text-9xl font-bold text-white/80 cursor-pointer transition-all duration-300 hover:text-gray-300 hover:tracking-wider"
-              onMouseEnter={() => setHoveredProject(project)}
-              onMouseLeave={() => setHoveredProject(null)}
-              onClick={()=>handleproject(projects.title)}
-            >
-              {project.title}
-            </h2>
+          >
+            <Link to={`/projects/${project.id}`}>
+              <h2
+                ref={(el) => (titlesRef.current[index] = el)}
+                className="text-6xl [text-shadow:5px_5px_10px_black] md:text-8xl lg:text-9xl font-bold text-white/80 cursor-pointer transition-all duration-300 hover:text-gray-300 hover:tracking-wider"
+                onMouseEnter={() => setHoveredProject(project)}
+                onMouseLeave={() => setHoveredProject(null)}
+                onClick={() => handleproject(projects.title)}
+              >
+                {project.title}
+              </h2>
             </Link>
           </div>
         ))}
-       
       </div>
-         
 
       {/* Floating Image on Hover */}
       {hoveredProject && (
