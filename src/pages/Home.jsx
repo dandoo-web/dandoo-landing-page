@@ -5,6 +5,7 @@ import MovText from "../sections/MovText";
 import About from "../sections/About";
 import Services from "../sections/Services";
 import Project from "../sections/Project";
+import Contact from "../sections/Contact";
 
 const Home = () => {
   return (
@@ -27,6 +28,7 @@ const Home = () => {
       <Services />
       {/* <MovText postion={"bottom"} /> */}
       <Project />
+      <Contact />
     </div>
   );
 };
