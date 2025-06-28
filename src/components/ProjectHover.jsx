@@ -79,12 +79,12 @@ const ProjectHover = () => {
         {projects.map((project, index) => (
           <div
             key={project.title || index}
-            className="h-[90vh] flex items-center justify-center relative"
+            className="h-[60vh] md:min-h-screen flex items-center  justify-center relative"
           >
             <Link to={`/projects/${project.id}`}>
               <h2
                 ref={(el) => (titlesRef.current[index] = el)}
-                className="text-6xl [text-shadow:5px_5px_10px_black] md:text-8xl lg:text-9xl font-bold text-white/80 cursor-pointer transition-all duration-300 hover:text-gray-300 hover:tracking-wider"
+                className="text-4xl text-center [text-shadow:5px_5px_10px_black] md:text-8xl lg:text-9xl font-bold text-white/80 cursor-pointer transition-all duration-300 hover:text-gray-300 hover:tracking-wider"
                 onMouseEnter={() => setHoveredProject(project)}
                 onMouseLeave={() => setHoveredProject(null)}
                 onClick={() => handleproject(projects.title)}

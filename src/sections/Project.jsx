@@ -32,7 +32,7 @@ const Project = () => {
       </>
 
       <div className="pb-20 pt-10 px-6 md:px-16 relative ">
-        <p className="text-center font-medium uppercase">[ Project ]</p>
+        <p className="text-center  font-medium uppercase">[ Project ]</p>
         <div
           className={
             "absolute inset-0 " +
