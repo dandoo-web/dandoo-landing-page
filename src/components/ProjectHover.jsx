@@ -79,7 +79,7 @@ const ProjectHover = () => {
         {projects.map((project, index) => (
           <div
             key={project.title || index}
-            className="h-[90vh] flex items-center justify-center relative"
+            className="h-[60vh] md:min-h-screen flex items-center  justify-center relative"
           >
             <Link to={`/projects/${project.id}`}>
               <h2
