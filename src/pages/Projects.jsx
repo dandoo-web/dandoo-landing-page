@@ -14,6 +14,18 @@ const Project = () => {
     githubUrl: "",
     liveUrl: "",
   });
+
+  // Video performance optimization styles
+  const videoStyles = {
+    willChange: 'transform',
+    backfaceVisibility: 'hidden',
+    transform: 'translateZ(0)',
+    WebkitTransform: 'translateZ(0)',
+    WebkitBackfaceVisibility: 'hidden',
+    perspective: '1000px',
+    WebkitPerspective: '1000px'
+  };
+
   console.log(id);
 
   useEffect(() => {
@@ -79,6 +91,11 @@ const Project = () => {
                     className="w-full h-full object-cover"
                     controls
                     poster={first.image}
+                    preload="metadata"
+                    playsInline
+                    muted
+                    loop
+                    style={videoStyles}
                   >
                     <source src={first.video} type="video/mp4" />
                     Your browser does not support the video tag.
