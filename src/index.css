@@ -102,3 +102,13 @@ html {
   box-sizing: border-box;
   position: relative;
 }
+
+.logo-div2{
+  white-space: nowrap;
+}
+.logo-slide2{
+  animation: slide 5s infinite linear;
+}
+.logo-div2:hover .logo-slide{
+  animation-play-state: paused;
+}
