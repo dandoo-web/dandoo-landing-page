@@ -212,11 +212,11 @@
 import React, { useState } from "react";
 import { Canvas, useThree } from '@react-three/fiber';
 import { Stars, OrbitControls } from '@react-three/drei';
-import { useNavigate } from 'react-router-dom';
 import Earth from '../components/Earth';
+import ContactForm from '../pages/ContactForm';
 
 // Responsive Earth component
-const ResponsiveEarth = ({ navigate, setMousePosition, setIsHovered }) => {
+const ResponsiveEarth = ({ onContactClick, setMousePosition, setIsHovered }) => {
   const { viewport } = useThree();
   
   // Calculate responsive scale based on viewport (reduced sizes)
@@ -228,7 +228,7 @@ const ResponsiveEarth = ({ navigate, setMousePosition, setIsHovered }) => {
     <Earth 
       scale={scale}
       position={[0, 0, 0]}
-      onClick={() => navigate('/contact')}
+      onClick={onContactClick}
       onPointerOver={(e) => {
         setIsHovered(true);
         setMousePosition({ x: e.clientX, y: e.clientY });
@@ -244,7 +244,7 @@ const ResponsiveEarth = ({ navigate, setMousePosition, setIsHovered }) => {
 };
 
 // Scene component
-const Scene = ({ navigate, setMousePosition, setIsHovered }) => {
+const Scene = ({ onContactClick, setMousePosition, setIsHovered }) => {
   const { camera, viewport } = useThree();
   
   React.useEffect(() => {
@@ -275,7 +275,7 @@ const Scene = ({ navigate, setMousePosition, setIsHovered }) => {
       
       {/* Responsive Earth */}
       <ResponsiveEarth 
-        navigate={navigate} 
+        onContactClick={onContactClick} 
         setMousePosition={setMousePosition}
         setIsHovered={setIsHovered}
       />
@@ -295,9 +295,17 @@ const Scene = ({ navigate, setMousePosition, setIsHovered }) => {
 };
 
 const Contact = () => {
-  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+
+  const handleContactClick = () => {
+    setIsContactFormOpen(true);
+  };
+
+  const handleCloseContactForm = () => {
+    setIsContactFormOpen(false);
+  };
 
   return (
     <div className="w-full h-screen relative overflow-hidden" style={{ minHeight: '100vh' }}>
@@ -321,11 +329,17 @@ const Contact = () => {
         style={{ background: '#000000' }}
       >
         <Scene 
-          navigate={navigate} 
+          onContactClick={handleContactClick} 
           setMousePosition={setMousePosition}
           setIsHovered={setIsHovered}
         />
       </Canvas>
+
+      {/* Contact Form Modal */}
+      <ContactForm 
+        isOpen={isContactFormOpen} 
+        onClose={handleCloseContactForm} 
+      />
     </div>
   );
 };
