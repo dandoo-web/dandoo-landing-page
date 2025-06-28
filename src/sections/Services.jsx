@@ -1,4 +1,5 @@
 import keyboard from "../assets/keyboard.png";
+import model from "../assets/3dmodel.png";
 import tetra from "../assets/tetra.jpeg";
 import img1 from "../assets/section1.png";
 import img2 from "../assets/section2.png";
@@ -55,7 +56,7 @@ export default function Services() {
           <div className="relative h-full">
             <h1 className="absolute text-xl top-0 z-20 left-0">3D Magic</h1>
             {/* <img src={tetra} className="w-2/3 -translate-y-2/12 mx-auto" alt="" /> */}
-            <img src={keyboard} className="w-3/3  md:w-2/3  mx-auto" alt="" />
+            <img src={model} className="w-3/3  md:w-2/3  mx-auto" alt="" />
             <p className="absolute bottom-0 left-0">
               Bringing your site to life with 3D magic.
             </p>

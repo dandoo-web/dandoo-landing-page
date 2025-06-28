@@ -6,6 +6,7 @@ import About from "../sections/About";
 import Services from "../sections/Services";
 import Project from "../sections/Project";
 import Contact from "../sections/Contact";
+import Testimonials from "../sections/Testimonials";
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
       {/* <MovText postion={"bottom"} /> */}
       <Project />
       <Contact />
+      <Testimonials />
     </div>
   );
 };
