@@ -25,8 +25,8 @@ const About = () => {
     <div className="w-[90%] my-[10vh] mx-auto">
       <p className="text-center font-medium pb-5">[ ABOUT US ]</p>
       <div className="flex justify-center items-center">
-        <div className="text-9xl text-white/90">
-          <h1 className="text-center translate tracking-tight calsans-font uppercase">
+        <div className=" text-6xl  md:text-8xl lg:text-9xl  text-white/90">
+          <h1 className="text-center translate tracking-tight  calsans-font uppercase">
             Dandoo
           </h1>
           <h1

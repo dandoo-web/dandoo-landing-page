@@ -161,7 +161,7 @@ const Contact = () => {
     textMeshesRef.current = textMeshes;
 
     // Position camera - responsive positioning
-    const cameraZ = isMobile ? 10 : isTablet ? 9 : 8;
+    const cameraZ = isMobile ? 12 : isTablet ? 9 : 8;
     const cameraY = isMobile ? 1 : 2;
     camera.position.set(0, cameraY, cameraZ);
     camera.lookAt(0, 0, 0);

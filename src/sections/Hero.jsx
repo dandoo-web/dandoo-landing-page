@@ -20,15 +20,15 @@ const Hero = () => {
     sequence();
   }, [controls]);
   return (
-    <section className="flex justify-center min-h-screen pt-[5vh]">
+    <section className="flex justify-center  min-h-screen pt-[5vh]">
       {/* canvas wrapping div */}
       <motion.div
         // onAnimationStart={() => window.scrollTo({ top: 0 })}
         initial={{ height: 0, width: 0 }}
         animate={controls}
         className="relative border-1 border-zinc-800 w-[90%]"
-      >
-        <div className="absolute z-20 left-0 -translate-x-1/2 top-0 w-5 h-5">
+      > 
+        <div className="absolute z-20  left-0 -translate-x-1/2 top-0 w-5 h-5">
           <hr className="border border-white/60 w-full" />
           <hr className="border border-white/60 w-full rotate-90" />
         </div>
@@ -50,7 +50,11 @@ const Hero = () => {
           transition={{ duration: 1, delay: 1.4 }}
           className="w-full h-full"
         >
-          <Scene1 />
+         
+
+          <Scene1  />
+        
+       
         </motion.div>
         <div className="absolute bottom-0 text-zinc-300 translate-y-full left-0">
           <p className="pl-3 pt-2">© 2025 Dandoo.</p>

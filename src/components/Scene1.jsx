@@ -22,14 +22,16 @@ const Scene1 = () => {
         width: "100%",
         height: "100%",
       }}
+      
     >
       <ambientLight intensity={5} />
-      <Text
+      <Text 
         position={[0, 1, 0]}
         font="/fonts/Cal_Sans/cal-sans.ttf"
         fontSize={1.2}
         color="white"
         anchorX="center"
+        
       >
         We Don't Do Pretty.
       </Text>
