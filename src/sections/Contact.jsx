@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from 'three';
+import { useNavigate } from 'react-router-dom';
 
 const Contact = () => {
   const mountRef = useRef(null);
   const textMeshesRef = useRef([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!mountRef.current) return;
@@ -40,6 +42,54 @@ const Contact = () => {
     });
     const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
     scene.add(sphere);
+
+    // Mouse interaction setup
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let isHovering = false;
+    const originalColor = 0xdddddd;
+    const hoverColor = 0xFFFFF0; // Golden yellow
+
+    // Mouse event handlers
+    const onMouseMove = (event) => {
+      const rect = mountElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(sphere);
+
+      if (intersects.length > 0) {
+        if (!isHovering) {
+          isHovering = true;
+          sphere.material.color.setHex(hoverColor);
+          mountElement.style.cursor = 'pointer';
+        }
+      } else {
+        if (isHovering) {
+          isHovering = false;
+          sphere.material.color.setHex(originalColor);
+          mountElement.style.cursor = 'default';
+        }
+      }
+    };
+
+    const onClick = (event) => {
+      const rect = mountElement.getBoundingClientRect();
+      mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObject(sphere);
+
+      if (intersects.length > 0) {
+        navigate('/contact');
+      }
+    };
+
+    // Add event listeners
+    mountElement.addEventListener('mousemove', onMouseMove);
+    mountElement.addEventListener('click', onClick);
 
     // Add lighting
     const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
@@ -165,12 +215,14 @@ const Contact = () => {
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
+      mountElement.removeEventListener('mousemove', onMouseMove);
+      mountElement.removeEventListener('click', onClick);
       if (mountElement && renderer.domElement) {
         mountElement.removeChild(renderer.domElement);
       }
       renderer.dispose();
     };
-  }, []);
+  }, [navigate]);
 
   return (
     <div 

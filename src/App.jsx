@@ -2,6 +2,7 @@ import Home from "./pages/Home";
 import Lenis from "lenis";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Project from "./pages/Projects";
+import ContactForm from "./pages/ContactForm";
 
 function App() {
   const lenis = new Lenis({
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects/:id" element={<Project />} />
+          <Route path='/contact' element={<ContactForm />} />
         </Routes>
         {/* <div className="h-[100vh] flex justify-center items-center">
         <h1 className="text-5xl"> Hello World</h1>
