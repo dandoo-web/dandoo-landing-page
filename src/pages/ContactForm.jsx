@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Mail, User, MessageSquare, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from "@emailjs/browser"
 
 const ContactForm = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -19,21 +20,25 @@ const ContactForm = ({ isOpen, onClose }) => {
       [name]: value
     }));
   };
+   const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    console.log('Form submitted:', formData);
-    setIsSubmitting(false);
-    
-
+  emailjs.send(
+    import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+    formData,
+    import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+  ).then(() => {
     setFormData({ name: '', email: '', subject: '', message: '' });
-    onClose();
-  };
+  }).catch((error) => {
+    console.error('Error while sending message:', error);
+  })
+    setIsSubmitting(false);
+    onClose(); 
+  
+};
+
 
   return (
     <AnimatePresence>
@@ -122,15 +127,16 @@ const ContactForm = ({ isOpen, onClose }) => {
                 />
               </div>
 
-              {/* Submit Button */}
+               {/* Submit Button */}
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full py-3 px-4 bg-white text-black font-semibold rounded-lg hover:bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-900 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            
+              
+                className="w-full py-3 px-4 bg-white cursor-pointer text-black font-semibold rounded-lg hover:bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-zinc-900 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
+                    <div className="animate-spin  rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
                     Sending...
                   </>
                 ) : (
@@ -139,7 +145,8 @@ const ContactForm = ({ isOpen, onClose }) => {
                     Send Message
                   </>
                 )}
-              </button>
+              </button> 
+
             </form>
 
             {/* Footer */}
