@@ -7,6 +7,7 @@ import Services from "../sections/Services";
 import Project from "../sections/Project";
 import Contact from "../sections/Contact";
 import Testimonials from "../sections/Testimonials";
+import Footer from "../sections/Footer";
 
 const Home = () => {
   return (
@@ -31,6 +32,7 @@ const Home = () => {
       <Project />
       <Contact />
       <Testimonials />
+      <Footer />
     </div>
   );
 };
