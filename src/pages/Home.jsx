@@ -1,16 +1,13 @@
 import Hero from "../sections/Hero";
 import { ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
-import LazyComponent from "../utils/LazyComponent";
-
-// Lazy load heavy sections
-const MovText = () => import("../sections/MovText");
-const About = () => import("../sections/About");
-const Services = () => import("../sections/Services");
-const Project = () => import("../sections/Project");
-const Contact = () => import("../sections/Contact");
-const Testimonials = () => import("../sections/Testimonials");
-const Footer = () => import("../sections/Footer");
+import MovText from "../sections/MovText";
+import About from "../sections/About";
+import Services from "../sections/Services";
+import Project from "../sections/Project";
+import Contact from "../sections/Contact";
+import Testimonials from "../sections/Testimonials";
+import Footer from "../sections/Footer";
 
 const Home = () => {
   return (
@@ -27,48 +24,15 @@ const Home = () => {
       >
         <ChevronDown size={40} color="white" />
       </motion.div>
-      
-      <LazyComponent 
-        importFunc={MovText} 
-        children={{ postion: "top" }}
-        fallback={<div className="h-16 bg-white/10 animate-pulse"></div>}
-      />
-      
-      <LazyComponent 
-        importFunc={About}
-        fallback={<div className="h-96 bg-black/20 animate-pulse"></div>}
-      />
-      
-      <LazyComponent 
-        importFunc={MovText} 
-        children={{ postion: "bottom" }}
-        fallback={<div className="h-16 bg-white/10 animate-pulse"></div>}
-      />
-      
-      <LazyComponent 
-        importFunc={Services}
-        fallback={<div className="h-96 bg-black/20 animate-pulse"></div>}
-      />
-      
-      <LazyComponent 
-        importFunc={Project}
-        fallback={<div className="h-96 bg-black/20 animate-pulse"></div>}
-      />
-      
-      <LazyComponent 
-        importFunc={Contact}
-        fallback={<div className="h-96 bg-black/20 animate-pulse"></div>}
-      />
-      
-      <LazyComponent 
-        importFunc={Testimonials}
-        fallback={<div className="h-96 bg-black/20 animate-pulse"></div>}
-      />
-      
-      {/* <LazyComponent 
-        importFunc={Footer}
-        fallback={<div className="h-32 bg-black/20 animate-pulse"></div>}
-      /> */}
+      <MovText postion={"top"} />
+      <About />
+      <MovText postion={"bottom"} />
+      <Services />
+      {/* <MovText postion={"bottom"} /> */}
+      <Project />
+      <Contact />
+      <Testimonials />
+      <Footer />
     </div>
   );
 };

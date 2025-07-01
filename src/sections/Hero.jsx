@@ -1,8 +1,6 @@
+import Scene1 from "../components/Scene1";
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, Suspense, lazy } from "react";
-
-// Lazy load the heavy 3D scene
-const Scene1 = lazy(() => import("../components/Scene1"));
+import { useEffect } from "react";
 
 const Hero = () => {
   const controls = useAnimation();
@@ -52,18 +50,11 @@ const Hero = () => {
           transition={{ duration: 1, delay: 1.4 }}
           className="w-full h-full"
         >
-          <Suspense 
-            fallback={
-              <div className="w-full h-full flex items-center justify-center bg-black">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-white mx-auto mb-4"></div>
-                  <p className="text-white/70">Loading 3D Scene...</p>
-                </div>
-              </div>
-            }
-          >
-            <Scene1 />
-          </Suspense>
+         
+
+          <Scene1  />
+        
+       
         </motion.div>
         <div className="absolute bottom-0 text-zinc-300 translate-y-full left-0">
           <p className="pl-3 pt-2">© 2025 Dandoo.</p>
