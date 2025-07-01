@@ -1,54 +1,17 @@
-import { Fluid } from "@whatisjery/react-fluid-distortion";
+import { Fluid, useConfig } from "@whatisjery/react-fluid-distortion";
 import { Canvas } from "@react-three/fiber";
 import { EffectComposer } from "@react-three/postprocessing";
 import { OrbitControls, Text } from "@react-three/drei";
 import { RoundedBox } from "@react-three/drei";
-import { useState, useEffect } from "react";
 
 const Scene1 = () => {
-  const [windowSize, setWindowSize] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 1200,
-    height: typeof window !== 'undefined' ? window.innerHeight : 800,
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Responsive breakpoints
-  const isMobile = windowSize.width < 768;
-  const isTablet = windowSize.width >= 768 && windowSize.width < 1024;
-
-  // Responsive values
-  const titleFontSize = isMobile ? 0.5 : isTablet ? 1.0 : 1.2;
-  const titlePosition1 = isMobile ? [0, 0.8, 0] : isTablet ? [0, 0.9, 0] : [0, 1, 0];
-  const titlePosition2 = isMobile ? [0, 0.1, 0] : isTablet ? [0, -0.1, 0] : [0, -0.2, 0];
-  
-  const buttonWidth = isMobile ? 2.5 : isTablet ? 2.8 : 3;
-  const buttonHeight = isMobile ? 0.6 : isTablet ? 0.65 : 0.7;
-  const buttonPosition = isMobile ? [0, -1.2, 0] : isTablet ? [0, -1.35, 0] : [0, -1.5, 0];
-  const buttonTextPosition = isMobile ? [0, -1.2, 0.1] : isTablet ? [0, -1.35, 0.1] : [0, -1.5, 0.1];
-  const buttonFontSize = isMobile ? 0.2 : isTablet ? 0.22 : 0.25;
-
-  // Camera settings for different screen sizes
-  const cameraFov = isMobile ? 85 : isTablet ? 75 : 75;
-  const cameraPosition = isMobile ? [0, 0, 4] : isTablet ? [0, 0, 3.5] : [0, 0, 3];
-
   const config1 = {
     intensity: 0,
-    force: isMobile ? 3.0 : isTablet ? 3.6 : 4.3,
-    distortion: isMobile ? 0.3 : isTablet ? 0.4 : 0.5,
-    curl: isMobile ? 1.5 : isTablet ? 1.7 : 1.9,
-    swirl: isMobile ? 5 : isTablet ? 6 : 7,
-    blend: isMobile ? 8 : isTablet ? 9 : 10,
+    force: 4.3,
+    distortion: 0.5,
+    curl: 1.9,
+    swirl: 7,
+    blend: 10,
     rainbow: true,
     backgroundColor: "#000000",
   };
@@ -59,19 +22,15 @@ const Scene1 = () => {
         width: "100%",
         height: "100%",
       }}
-      camera={{
-        fov: cameraFov,
-        position: cameraPosition,
-      }}
-      dpr={isMobile ? 1 : 2} // Lower pixel ratio on mobile for better performance
+      
     >
       <ambientLight intensity={5} />
 
 
       <Text 
-        position={titlePosition1}
+        position={[0, 1, 0]}
         font="/fonts/Cal_Sans/cal-sans.ttf"
-        fontSize={titleFontSize}
+        fontSize={1.2}
         color="white"
         anchorX="center"
         
@@ -80,9 +39,9 @@ const Scene1 = () => {
       </Text>
 
       <Text
-        position={titlePosition2} 
+        position={[0, -0.2, 0]} // adjust Y position to place it below
         font="/fonts/Cal_Sans/cal-sans.ttf"
-        fontSize={titleFontSize}
+        fontSize={1.2}
         color="white"
         anchorX="center"
       >
@@ -93,19 +52,19 @@ const Scene1 = () => {
       </mesh> */}
 
       <RoundedBox
-        args={[buttonWidth, buttonHeight, 0]} 
-        radius={0.3} 
-        smoothness={10} 
+        args={[3, 0.7, 0]} // width, height, depth (make depth tiny)
+        radius={0.3} // corner radius
+        smoothness={10} // curve smoothness
         rotation={[-0.3, 0, 0]}
-        position={buttonPosition}
+        position={[0, -1.5, 0]}
       >
         <meshStandardMaterial color="white" />
       </RoundedBox>
       <Text
-        position={buttonTextPosition} 
+        position={[0, -1.5, 0.1]} // just in front of the box face
         // font="/fonts/Cal_Sans.ttf"
         font="/fonts/Cal_Sans/cal-sans.ttf"
-        fontSize={buttonFontSize}
+        fontSize={0.25}
         color="black"
         anchorX="center"
         anchorY="middle"
