@@ -2,6 +2,8 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import projects from "../info/projectinfo.js";
+import LazyVideo from "../utils/LazyVideo";
+import LazyImage from "../utils/LazyImage";
 
 const Project = () => {
   const { id } = useParams();
