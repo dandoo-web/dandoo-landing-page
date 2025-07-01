@@ -63,10 +63,9 @@ const Scene1 = () => {
         fov: cameraFov,
         position: cameraPosition,
       }}
-      dpr={isMobile ? 1 : 2} // Lower pixel ratio on mobile for better performance
+      dpr={2} // Lower pixel ratio on mobile for better performance
     >
       <ambientLight intensity={5} />
-
 
       <Text 
         position={titlePosition1}
