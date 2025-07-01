@@ -28,11 +28,11 @@ const Scene1 = () => {
   const isTablet = windowSize.width >= 768 && windowSize.width < 1024;
 
   // Responsive values
-  const titleFontSize = isMobile ? 0.5 : isTablet ? 1.0 : 1.2;
+  const titleFontSize = isMobile ? 0.4 : isTablet ? 1.0 : 1.2;
   const titlePosition1 = isMobile ? [0, 0.8, 0] : isTablet ? [0, 0.9, 0] : [0, 1, 0];
   const titlePosition2 = isMobile ? [0, 0.1, 0] : isTablet ? [0, -0.1, 0] : [0, -0.2, 0];
   
-  const buttonWidth = isMobile ? 2.5 : isTablet ? 2.8 : 3;
+  const buttonWidth = isMobile ? 2.3 : isTablet ? 2.8 : 3;
   const buttonHeight = isMobile ? 0.6 : isTablet ? 0.65 : 0.7;
   const buttonPosition = isMobile ? [0, -1.2, 0] : isTablet ? [0, -1.35, 0] : [0, -1.5, 0];
   const buttonTextPosition = isMobile ? [0, -1.2, 0.1] : isTablet ? [0, -1.35, 0.1] : [0, -1.5, 0.1];
