@@ -14,7 +14,7 @@ const Home = () => {
     <div className="relative">
       <Hero />
       <motion.div
-        className="absolute bottom-4 left-1/2 -translate-x-1/2"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 6, 0] }}
         transition={{
           duration: 1.5,
@@ -28,11 +28,23 @@ const Home = () => {
       <About />
       <MovText postion={"bottom"} />
       <Services />
-      {/* <MovText postion={"bottom"} /> */}
       <Project />
       <Contact />
-      <Testimonials />
-      <Footer />
+      
+      {/* Create a relative container for the overlay effect */}
+      <div className="relative">
+        <div className="relative z-20 bg-black">
+          <Testimonials />
+        </div>
+        
+        {/* Footer with overlay effect - appears from behind testimonials */}
+        <div className="relative z-10 -mt-32">
+          <Footer />
+        </div>
+      </div>
+      
+      {/* Add some bottom padding to ensure footer is fully visible */}
+      <div className="h-20 bg-transparent"></div>
     </div>
   );
 };
