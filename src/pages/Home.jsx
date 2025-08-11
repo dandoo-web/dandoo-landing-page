@@ -29,6 +29,10 @@ const Home = () => {
       <MovText postion={"bottom"} />
       <Services />
       <Project />
+
+      {/* <Contact /> */}
+      <Testimonials />
+      <Footer />
       <Contact />
       
       {/* Create a relative container for the overlay effect */}
