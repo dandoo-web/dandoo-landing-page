@@ -7,48 +7,55 @@ Source: https://sketchfab.com/3d-models/earth-41fc80d85dfd480281f21b74b2de2faa
 Title: Earth
 */
 
-import React, { useRef, Suspense, useEffect, useState } from 'react'
-import { useGLTF, useTexture } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
+import React, { useRef, Suspense, useEffect, useState } from "react";
+import { useGLTF, useTexture } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 
 function EarthModel(props) {
-  const { onClick, onPointerOver, onPointerOut, onPointerMove, scale = 2, ...restProps } = props
-  const { nodes } = useGLTF('/earth.gltf')
-  const earthTexture = useTexture('/textures/Material.002_diffuse.jpeg')
-  const meshRef = useRef()
-  const [hovered, setHovered] = useState(false)
-  
+  const {
+    onClick,
+    onPointerOver,
+    onPointerOut,
+    onPointerMove,
+    scale = 2,
+    ...restProps
+  } = props;
+  const { nodes } = useGLTF("/earth.gltf");
+  const earthTexture = useTexture("/textures/Material.002_diffuse.jpeg");
+  const meshRef = useRef();
+  const [hovered, setHovered] = useState(false);
+
   useFrame(() => {
     if (meshRef.current) {
-      meshRef.current.rotation.y += 0.005
+      meshRef.current.rotation.y += 0.005;
     }
-  })
-  
-  useEffect(() => {
-    console.log('Earth Model Loaded:')
-    console.log('Nodes:', nodes)
-    console.log('Texture loaded:', earthTexture)
-  }, [nodes, earthTexture])
-  
+  });
+
+  // useEffect(() => {
+  //   console.log('Earth Model Loaded:')
+  //   console.log('Nodes:', nodes)
+  //   console.log('Texture loaded:', earthTexture)
+  // }, [nodes, earthTexture])
+
   // Check if the model loaded correctly
   if (!nodes.Sphere_Material002_0) {
-    console.error('Earth model geometry failed to load')
-    console.log('Available nodes:', Object.keys(nodes))
+    console.error("Earth model geometry failed to load");
+    // console.log("Available nodes:", Object.keys(nodes));
     return (
       <mesh scale={scale}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshStandardMaterial color="blue" />
       </mesh>
-    )
+    );
   }
-  
+
   return (
     <group {...restProps} dispose={null}>
-      <mesh 
+      <mesh
         ref={meshRef}
-        geometry={nodes.Sphere_Material002_0.geometry} 
-        rotation={[-Math.PI / 2, 0, 0]} 
-        scale={scale} 
+        geometry={nodes.Sphere_Material002_0.geometry}
+        rotation={[-Math.PI / 2, 0, 0]}
+        scale={scale}
         position={[0, 0, 0]}
         onClick={(e) => {
           e.stopPropagation();
@@ -57,20 +64,20 @@ function EarthModel(props) {
         onPointerOver={(e) => {
           e.stopPropagation();
           setHovered(true);
-          document.body.style.cursor = 'pointer';
+          document.body.style.cursor = "pointer";
           if (onPointerOver) onPointerOver(e);
         }}
         onPointerOut={(e) => {
           e.stopPropagation();
           setHovered(false);
-          document.body.style.cursor = 'default';
+          document.body.style.cursor = "default";
           if (onPointerOut) onPointerOut(e);
         }}
         onPointerMove={(e) => {
           if (onPointerMove) onPointerMove(e);
         }}
       >
-        <meshStandardMaterial 
+        <meshStandardMaterial
           map={earthTexture}
           roughness={hovered ? 0.6 : 0.8}
           metalness={hovered ? 0.2 : 0.1}
@@ -78,21 +85,23 @@ function EarthModel(props) {
         />
       </mesh>
     </group>
-  )
+  );
 }
 
 export default function Earth(props) {
   const { scale = 2 } = props;
   return (
-    <Suspense fallback={
-      <mesh scale={scale}>
-        <sphereGeometry args={[1, 32, 32]} />
-        <meshStandardMaterial color="gray" />
-      </mesh>
-    }>
+    <Suspense
+      fallback={
+        <mesh scale={scale}>
+          <sphereGeometry args={[1, 32, 32]} />
+          <meshStandardMaterial color="gray" />
+        </mesh>
+      }
+    >
       <EarthModel {...props} />
     </Suspense>
-  )
+  );
 }
 
-useGLTF.preload('/earth.gltf')
+useGLTF.preload("/earth.gltf");

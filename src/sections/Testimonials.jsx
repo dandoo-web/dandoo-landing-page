@@ -238,7 +238,8 @@ const Testimonials = () => {
             </p>
             <button
               onClick={handleStartProject}
-              className="bg-white text-black px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+              className="bg-white text-black
+               px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
             >
               Start Your Project
             </button>

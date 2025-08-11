@@ -3,6 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { EffectComposer } from "@react-three/postprocessing";
 import { OrbitControls, Text } from "@react-three/drei";
 import { RoundedBox } from "@react-three/drei";
+import { useEffect, useState } from "react";
 
 const Scene1 = () => {
   const config1 = {
@@ -16,30 +17,45 @@ const Scene1 = () => {
     backgroundColor: "#000000",
   };
 
+  const [postion, setpostion] = useState([0, 1, 0]);
+  const [postion2, setpostion2] = useState([0, -0.2, 0]);
+
+  useEffect(() => {
+    if (window.innerWidth >= 1280) {
+      setpostion([0, 1, 0]);
+      setpostion2([0, -0.2, 0]);
+    }
+    if (window.innerWidth < 1280 && window.innerWidth >= 768) {
+      setpostion([0, 1, -1.5]);
+      setpostion2([0, -0.2, -1.5]);
+    }
+    if (window.innerWidth < 768 && window.innerWidth >= 425) {
+      setpostion([0, 1, -2.5]);
+      setpostion2([0, -0.2, -2.5]);
+    }
+  }, []);
+
   return (
     <Canvas
       style={{
         width: "100%",
         height: "100%",
       }}
-      
     >
       <ambientLight intensity={5} />
 
-
-      <Text 
-        position={[0, 1, 0]}
+      <Text
+        position={postion}
         font="/fonts/Cal_Sans/cal-sans.ttf"
         fontSize={1.2}
         color="white"
         anchorX="center"
-        
-        >
+      >
         We Don't Do Pretty.
       </Text>
 
       <Text
-        position={[0, -0.2, 0]} // adjust Y position to place it below
+        position={postion2} // adjust Y position to place it below
         font="/fonts/Cal_Sans/cal-sans.ttf"
         fontSize={1.2}
         color="white"

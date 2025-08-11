@@ -27,7 +27,7 @@ const Hero = () => {
         initial={{ height: 0, width: 0 }}
         animate={controls}
         className="relative border-1 border-zinc-800 w-[90%]"
-      > 
+      >
         <div className="absolute z-20  left-0 -translate-x-1/2 top-0 w-5 h-5">
           <hr className="border border-white/60 w-full" />
           <hr className="border border-white/60 w-full rotate-90" />
@@ -47,14 +47,20 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 1.4 }}
+          transition={{ duration: 1, delay: 1.5 }}
           className="w-full h-full"
         >
-         
-
-          <Scene1  />
-        
-       
+          <div className="w-full h-full hidden md:block ">
+            <Scene1 />
+          </div>
+          <div className="flex md:hidden flex-col gap-5 w-full h-full items-center justify-center">
+            <h1 className="calsans-font text-5xl text-center font-medium w-[95%]">
+              We Don't Do Pretty. We Do Legendary.
+            </h1>
+            <button className="bg-white py-3 font-semibold rounded-full px-10 text-black">
+              Let's Talk
+            </button>
+          </div>
         </motion.div>
         <div className="absolute bottom-0 text-zinc-300 translate-y-full left-0">
           <p className="pl-3 pt-2">© 2025 Dandoo.</p>
