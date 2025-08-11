@@ -30,7 +30,7 @@ const Home = () => {
       <Services />
       {/* <MovText postion={"bottom"} /> */}
       <Project />
-      <Contact />
+      {/* <Contact /> */}
       <Testimonials />
       <Footer />
     </div>
