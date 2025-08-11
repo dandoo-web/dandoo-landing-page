@@ -31,22 +31,16 @@ const Home = () => {
       <Project />
 
       {/* <Contact /> */}
-      <Testimonials />
-      <Footer />
-      <Contact />
-      
       {/* Create a relative container for the overlay effect */}
       <div className="relative">
         <div className="relative z-20 bg-black">
           <Testimonials />
         </div>
-        
         {/* Footer with overlay effect - appears from behind testimonials */}
         <div className="relative z-10 -mt-32">
           <Footer />
         </div>
       </div>
-      
       {/* Add some bottom padding to ensure footer is fully visible */}
       <div className="h-20 bg-transparent"></div>
     </div>
