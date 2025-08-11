@@ -12,12 +12,16 @@ const Testimonials = () => {
   // Scroll animation setup
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
   // Transform values for different elements
   const yTransform = useTransform(scrollYProgress, [0, 1], [0, -150]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [1, 1, 0.8, 0.3]);
+  const opacityTransform = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.7, 1],
+    [1, 1, 0.8, 0.3]
+  );
   const scaleTransform = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.98, 0.95]);
 
   // Create floating particles
@@ -26,7 +30,7 @@ const Testimonials = () => {
     x: Math.random() * 100,
     y: Math.random() * 100,
     delay: Math.random() * 2,
-    duration: 4 + Math.random() * 4
+    duration: 4 + Math.random() * 4,
   }));
 
   const testimonials = [
@@ -94,7 +98,7 @@ const Testimonials = () => {
         if (!isHoveredRef.current) {
           setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
         }
-      }, 3000);
+      }, 8000);
     };
 
     startAutoRotation();
@@ -142,96 +146,33 @@ const Testimonials = () => {
   };
 
   return (
-    <motion.div 
+    <motion.div
       ref={containerRef}
       className="relative w-full min-h-screen bg-black py-12 md:py-20 overflow-hidden"
-      style={{ 
+      style={{
         y: yTransform,
         opacity: opacityTransform,
-        scale: scaleTransform
+        scale: scaleTransform,
       }}
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {/* Background Radial Gradients */}
-      <div className="absolute inset-0">
-        {/* Floating Particles */}
-        {particles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute w-1 h-1 bg-white/30 rounded-full"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-            }}
-            animate={{
-              y: [-20, 20, -20],
-              opacity: [0.3, 0.8, 0.3],
-              scale: [1, 1.5, 1]
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: particle.delay
-            }}
-          />
-        ))}
-        
-        <motion.div 
-          className="absolute top-5 left-5 md:top-10 md:left-10 w-48 h-48 md:w-96 md:h-96 bg-white/5 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ 
-            duration: 4, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
-        ></motion.div>
-        <motion.div 
-          className="absolute bottom-10 right-5 md:bottom-20 md:right-20 w-40 h-40 md:w-80 md:h-80 bg-white/3 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ 
-            duration: 6, 
-            repeat: Infinity, 
-            ease: "easeInOut",
-            delay: 1
-          }}
-        ></motion.div>
-        <motion.div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-[600px] md:h-[600px] bg-white/2 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.1, 1],
-            opacity: [0.1, 0.3, 0.1]
-          }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity, 
-            ease: "easeInOut",
-            delay: 2
-          }}
-        ></motion.div>
-      </div>
-
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-10 px-4"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <p className="text-center font-medium  text-white uppercase">[ Testimonials ]</p>
+          <p className="text-center font-medium  text-white uppercase">
+            [ Testimonials ]
+          </p>
         </motion.div>
         {/* Main Testimonial Display */}
-        <motion.div 
+        <motion.div
           className="max-w-4xl mx-auto mb-12 md:mb-16 px-4"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -323,7 +264,7 @@ const Testimonials = () => {
         </motion.div>
 
         {/* Testimonial Indicators */}
-        <motion.div 
+        <motion.div
           className="flex justify-center gap-2 sm:gap-3 mb-12 md:mb-16 px-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -346,19 +287,19 @@ const Testimonials = () => {
         </motion.div>
 
         {/* Call to Action */}
-        <motion.div 
+        <motion.div
           className="text-center mt-16 md:mt-20 px-4"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <motion.div 
+          <motion.div
             className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl md:rounded-2xl p-6 sm:p-8 max-w-2xl mx-auto"
             whileHover={{ scale: 1.02, y: -5 }}
             transition={{ duration: 0.3 }}
           >
-            <motion.h3 
+            <motion.h3
               className="text-xl sm:text-2xl md:text-3xl font-medium text-white mb-3 md:mb-4 calsans-font leading-tight"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -367,7 +308,7 @@ const Testimonials = () => {
             >
               Ready to Join Our Success Stories?
             </motion.h3>
-            <motion.p 
+            <motion.p
               className="text-white/70 mb-4 md:mb-6 text-sm sm:text-base leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -381,10 +322,10 @@ const Testimonials = () => {
               onClick={handleStartProject}
               className="bg-white text-black
                px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
-              className="bg-white text-black px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
-              whileHover={{ 
+              // className="bg-white text-black px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105 text-sm sm:text-base"
+              whileHover={{
                 scale: 1.05,
-                boxShadow: "0 0 20px rgba(255,255,255,0.3)"
+                boxShadow: "0 0 20px rgba(255,255,255,0.3)",
               }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
@@ -400,7 +341,7 @@ const Testimonials = () => {
 
       {/* Contact Form Modal */}
       <ContactForm isOpen={isContactFormOpen} onClose={handleCloseContactForm} />
-      
+
       {/* Spacer to create scroll trigger for footer */}
       <div className="h-20"></div>
     </motion.div>
